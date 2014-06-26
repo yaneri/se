@@ -1,9 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Se.Core
-Bundle-SymbolicName: com.yaneri.se.core
+Bundle-Name: Se.Http
+Bundle-SymbolicName: com.yaneri.se.http
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: YANERI
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: com.yaneri.se.channel,
+Import-Package: com.yaneri.se.channel,
+ com.yaneri.se.channel.impl,
  com.yaneri.se.core

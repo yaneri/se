@@ -3,6 +3,8 @@ package com.yaneri.se.channel;
 import java.util.Locale;
 
 import com.yaneri.se.core.Context;
+import com.yaneri.se.core.Request;
+import com.yaneri.se.core.Response;
 
 public interface ChannelContext {
 	

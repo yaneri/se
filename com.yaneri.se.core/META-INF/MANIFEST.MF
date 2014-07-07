@@ -7,3 +7,5 @@ Bundle-Vendor: YANERI
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: com.yaneri.se.channel,
  com.yaneri.se.core
+Import-Package: javax.servlet,
+ javax.servlet.http

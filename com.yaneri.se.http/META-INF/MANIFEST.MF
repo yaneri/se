@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Se.Http
+Bundle-SymbolicName: com.yaneri.se.http
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: YANERI
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.yaneri.com/schema/se" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.yaneri.com/schema/se" 
+	elementFormDefault="qualified" 
+	attributeFormDefault="unqualified">
+	
+	<xsd:import namespace="http://www.springframework.org/schema/beans"/>
+	
+	<xsd:annotation>
+		<xsd:documentation>
+			<![CDATA[Defines the configuration elements for the se's Spring support.]]>
+		</xsd:documentation>
+	</xsd:annotation>
+	
+	<xsd:element name="description">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[description]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="true">
+			<xsd:choice minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="transaction" type="transactionType">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[transaction]]>
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="action" type="actionType">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[action]]>
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	
+	<xsd:complexType name="transactionType">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[transaction]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="action" type="refType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="fields" type="fieldsType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="channel" type="channelType"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:ID" use="required"/>
+		<xsd:attribute name="template" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="refType">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[ref]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="ref" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="actionType">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[action]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ref" type="contentType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:ID" use="required"/>
+		<xsd:attribute name="class" type="xsd:string" use="required">
+			<xsd:annotation>
+				<xsd:documentation source="java:java.lang.Class">
+					<![CDATA[The fully qualified name of the bean's class, except if it serves only as a parent definition for child bean definitions.]]>
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	
+	<xsd:complexType name="fieldsType">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[fields]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="field" type="contentType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="channelType">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[channel]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="path" type="contentType" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="type" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="contentType">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[field]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="name" type="xsd:string" use="required"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	
+</xsd:schema>
